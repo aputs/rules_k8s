@@ -520,65 +520,90 @@ def k8s_object(name, **kwargs):
         **implicit_args
     )
 
-    if "cluster" in kwargs or "context" in kwargs:
-        _k8s_object_create(
-            name = name + ".create",
-            resolved = name,
-            kind = kwargs.get("kind"),
-            cluster = kwargs.get("cluster"),
-            context = kwargs.get("context"),
-            kubeconfig = kwargs.get("kubeconfig"),
-            user = kwargs.get("user"),
-            namespace = kwargs.get("namespace"),
-            args = kwargs.get("args"),
-            **implicit_args
-        )
-        _k8s_object_delete(
-            name = name + ".delete",
-            reversed = name + ".reversed",
-            kind = kwargs.get("kind"),
-            cluster = kwargs.get("cluster"),
-            context = kwargs.get("context"),
-            kubeconfig = kwargs.get("kubeconfig"),
-            user = kwargs.get("user"),
-            namespace = kwargs.get("namespace"),
-            args = kwargs.get("args"),
-            **implicit_args
-        )
-        _k8s_object_replace(
-            name = name + ".replace",
-            resolved = name,
-            kind = kwargs.get("kind"),
-            cluster = kwargs.get("cluster"),
-            context = kwargs.get("context"),
-            kubeconfig = kwargs.get("kubeconfig"),
-            user = kwargs.get("user"),
-            namespace = kwargs.get("namespace"),
-            args = kwargs.get("args"),
-            **implicit_args
-        )
-        _k8s_object_apply(
-            name = name + ".apply",
-            resolved = name,
-            kind = kwargs.get("kind"),
-            cluster = kwargs.get("cluster"),
-            context = kwargs.get("context"),
-            kubeconfig = kwargs.get("kubeconfig"),
-            user = kwargs.get("user"),
-            namespace = kwargs.get("namespace"),
-            args = kwargs.get("args"),
-            **implicit_args
-        )
-        if "kind" in kwargs:
-            _k8s_object_describe(
-                name = name + ".describe",
-                unresolved = kwargs.get("template"),
-                kind = kwargs.get("kind"),
-                cluster = kwargs.get("cluster"),
-                context = kwargs.get("context"),
-                kubeconfig = kwargs.get("kubeconfig"),
-                user = kwargs.get("user"),
-                namespace = kwargs.get("namespace"),
-                args = kwargs.get("args"),
-                **implicit_args
-            )
+    _k8s_object_apply(
+        name = name + ".apply",
+        resolved = name,
+        kind = kwargs.get("kind"),
+        cluster = kwargs.get("cluster"),
+        context = kwargs.get("context"),
+        kubeconfig = kwargs.get("kubeconfig"),
+        user = kwargs.get("user"),
+        namespace = kwargs.get("namespace"),
+        args = kwargs.get("args"),
+        **implicit_args
+    )
+    _k8s_object_delete(
+        name = name + ".delete",
+        reversed = name + ".reversed",
+        kind = kwargs.get("kind"),
+        cluster = kwargs.get("cluster"),
+        context = kwargs.get("context"),
+        kubeconfig = kwargs.get("kubeconfig"),
+        user = kwargs.get("user"),
+        namespace = kwargs.get("namespace"),
+        args = kwargs.get("args"),
+        **implicit_args
+    )
+    _k8s_object_describe(
+        name = name + ".describe",
+        unresolved = kwargs.get("template"),
+        kind = kwargs.get("kind"),
+        cluster = kwargs.get("cluster"),
+        context = kwargs.get("context"),
+        kubeconfig = kwargs.get("kubeconfig"),
+        user = kwargs.get("user"),
+        namespace = kwargs.get("namespace"),
+        args = kwargs.get("args"),
+        **implicit_args
+    )
+
+    # if "cluster" in kwargs or "context" in kwargs:
+    #     _k8s_object_create(
+    #         name = name + ".create",
+    #         resolved = name,
+    #         kind = kwargs.get("kind"),
+    #         cluster = kwargs.get("cluster"),
+    #         context = kwargs.get("context"),
+    #         kubeconfig = kwargs.get("kubeconfig"),
+    #         user = kwargs.get("user"),
+    #         namespace = kwargs.get("namespace"),
+    #         args = kwargs.get("args"),
+    #         **implicit_args
+    #     )
+    #     _k8s_object_replace(
+    #         name = name + ".replace",
+    #         resolved = name,
+    #         kind = kwargs.get("kind"),
+    #         cluster = kwargs.get("cluster"),
+    #         context = kwargs.get("context"),
+    #         kubeconfig = kwargs.get("kubeconfig"),
+    #         user = kwargs.get("user"),
+    #         namespace = kwargs.get("namespace"),
+    #         args = kwargs.get("args"),
+    #         **implicit_args
+    #     )
+    #     _k8s_object_apply(
+    #         name = name + ".apply",
+    #         resolved = name,
+    #         kind = kwargs.get("kind"),
+    #         cluster = kwargs.get("cluster"),
+    #         context = kwargs.get("context"),
+    #         kubeconfig = kwargs.get("kubeconfig"),
+    #         user = kwargs.get("user"),
+    #         namespace = kwargs.get("namespace"),
+    #         args = kwargs.get("args"),
+    #         **implicit_args
+    #     )
+    #     if "kind" in kwargs:
+    #         _k8s_object_describe(
+    #             name = name + ".describe",
+    #             unresolved = kwargs.get("template"),
+    #             kind = kwargs.get("kind"),
+    #             cluster = kwargs.get("cluster"),
+    #             context = kwargs.get("context"),
+    #             kubeconfig = kwargs.get("kubeconfig"),
+    #             user = kwargs.get("user"),
+    #             namespace = kwargs.get("namespace"),
+    #             args = kwargs.get("args"),
+    #             **implicit_args
+    #         )
