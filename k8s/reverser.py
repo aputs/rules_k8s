@@ -17,6 +17,10 @@ from __future__ import print_function
 
 import argparse
 import yaml
+try:
+    from yaml import CLoader as Loader, CDumper as Dumper
+except ImportError:
+    from yaml import Loader, Dumper
 
 parser = argparse.ArgumentParser(
     description='Reverse a potential multi-document input.')
@@ -32,7 +36,7 @@ def main():
   with open(args.template, 'r') as f:
     inputs = f.read()
 
-  content = yaml.dump_all(reversed([x for x in yaml.load_all(inputs, Loader=yaml.SafeLoader)]))
+  content = yaml.dump_all(reversed([x for x in yaml.load_all(inputs, Loader=Loader)]))
 
   print(content)
 
